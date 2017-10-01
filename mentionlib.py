@@ -1,3 +1,6 @@
+from twitter_api import apikey, apisecret, token, tokensecret
+from twython import Twython
+
 twitter = Twython(apikey, apisecret, token, tokensecret)
 
 # Pull down the most recent twitter mention JSON data
