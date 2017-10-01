@@ -91,7 +91,7 @@ while True:
             # Switch on the lab
             elif '@LabPiBot Poweron' in lastmentiontext:
 
-                switchon()
+                switch_on()
                 createtweet(
                     '@XianClasen I switched the lab on.  Give me some time to verify that it worked. ' + humantime)
 
@@ -135,7 +135,7 @@ while True:
 
                 # Turn off the power
                 logging.info(humantime + ': Switching off the power now.')
-                switchoff()
+                switch_off()
                 createtweet("@XianClasen I've switched off the power. " + humantime)
 
         # In case the mentioner isn't trusted
