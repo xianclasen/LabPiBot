@@ -86,13 +86,13 @@ while True:
             # Answer a basic health check query
             if '@LabPiBot Hello' in lastmentiontext:
 
-                createtweet("@XianClasen Is it me you're looking for? " + humantime)
+                mantionlib.createtweet("@XianClasen Is it me you're looking for? " + humantime)
 
             # Switch on the lab
             elif '@LabPiBot Poweron' in lastmentiontext:
 
                 switch_on()
-                createtweet(
+                mentionlib.createtweet(
                     '@XianClasen I switched the lab on.  Give me some time to verify that it worked. ' + humantime)
 
                 i = 0
@@ -107,17 +107,17 @@ while True:
                         logging.info(humantime + ping('esxi'))
 
                     elif i > 20:
-                        createtweet("@XianClasen I have failed you.  The lab isn't up." + humantime)
+                        mentionlib.createtweet("@XianClasen I have failed you.  The lab isn't up." + humantime)
                         break
 
-                createtweet('@XianClasen I verified that the lab is up. ' + humantime)
+                mentionlib.createtweet('@XianClasen I verified that the lab is up. ' + humantime)
                 logging.info(humantime + ': Tweet created: I verified that the lab is up. ')
 
             # Shutdown and switchoff the lab
             elif '@LabPiBot Poweroff' in lastmentiontext:
 
                 shutdown()
-                createtweet("@XianClasen I told ESXI to shutdown.  I'll let you know when I've switched off the power. "
+                mentionlib.createtweet("@XianClasen I told ESXI to shutdown.  I'll let you know when I've switched off the power. "
                             + humantime)
 
                 # Ping ESXI until it stops responding, or we reach 10 minutes
@@ -136,14 +136,14 @@ while True:
                 # Turn off the power
                 logging.info(humantime + ': Switching off the power now.')
                 switch_off()
-                createtweet("@XianClasen I've switched off the power. " + humantime)
+                mentionlib.createtweet("@XianClasen I've switched off the power. " + humantime)
 
         # In case the mentioner isn't trusted
         elif mentionerstatus == 'Unverified':
 
             logging.warning(lastmentionscreenname + ' tried to issue us the following command: ' + lastmentiontext)
             print(lastmentionscreenname + ' tried to issue us the following command: ' + lastmentiontext)
-            createtweet("@" + lastmentionscreenname + " You didn't say the magic word! " + humantime)
+            mentionlib.createtweet("@" + lastmentionscreenname + " You didn't say the magic word! " + humantime)
 
             # Reinitialize the last mention ID
             initmentionid = lastmentionid
