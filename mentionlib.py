@@ -58,3 +58,30 @@ def getlastmentiontext(lastmentiondict):
         return lastmentiontext
     except ValueError:
         print('I could not determine the text of the last mention.')
+
+def verifymentioner(screenname):
+    try:
+        if screenname == 'XianClasen':
+            return 'Verified'
+        else:
+            return 'Unverified'
+    except ValueError:
+        print('I could not verify the screen name.')
+
+
+# Make sure the mention is new
+def verifymentionid(mentionid, initmentionid):
+    try:
+        if int(mentionid) != int(initmentionid):
+            return 'Verified'
+        else:
+            return 'Unverified'
+    except ValueError:
+        print('I could not verify the mention ID.')
+
+# Create a tweet with given text
+def createtweet(tweetstring):
+    try:
+        api.update_status(status=tweetstring)
+    except ValueError:
+        print('I failed to create the tweet.')
