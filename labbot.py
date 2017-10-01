@@ -77,8 +77,7 @@ while True:
         if (mentionerstatus == 'Verified') and (idstatus == 'Verified'):
 
             # Log who issued us what command
-            logging.info(
-                humantime + ': ' + lastmentionscreenname + ' issued us the following command: ' + lastmentiontext)
+            logging.info(humantime + ': ' + lastmentionscreenname + ' issued us the following command: ' + lastmentiontext)
 
             # Reinitialize the ID
             initmentionid = lastmentionid
@@ -107,11 +106,12 @@ while True:
                         logging.info(humantime + ping('esxi'))
 
                     elif i > 20:
-                        mentionlib.createtweet("@XianClasen I have failed you.  The lab isn't up." + humantime)
+                        mentionlib.createtweet("@XianClasen I have failed you.  The lab isn't up. " + humantime)
                         break
 
-                mentionlib.createtweet('@XianClasen I verified that the lab is up. ' + humantime)
-                logging.info(humantime + ': Tweet created: I verified that the lab is up. ')
+                if hostisup:
+                    mentionlib.createtweet('@XianClasen I verified that the lab is up. ' + humantime)
+                    logging.info(humantime + ': Tweet created: I verified that the lab is up. ')
 
             # Shutdown and switchoff the lab
             elif '@LabPiBot Poweroff' in lastmentiontext:
