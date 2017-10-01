@@ -8,8 +8,8 @@ import time
 from twitter_api import apikey, apisecret, token, tokensecret
 from twython import Twython
 
-twitter = Twython(apiKey, apiSecret, accessToken, accessTokenSecret)
-api = Twython(apiKey, apiSecret, accessToken, accessTokenSecret)
+twitter = Twython(apikey, apisecret, token, tokensecret)
+api = Twython(apikey, apisecret, token, tokensecret)
 
 robot = Robot.Robot()
 
