@@ -29,17 +29,18 @@ def switch_on():
     try:
         robot.forward(255, .5)
         logging.info(humantime + ': Told the robot to switch the lab on.')
-    except ValueError:
-        print('I could not make the robot turn on the lab.')
-
+    except:
+        logging.exception('Got exception on switch_on.')
+        raise
 
 # Power off the lab via the power strip
 def switch_off():
     try:
         robot.backward(255, .5)
         logging.info(humantime + ': Told the robot to switch the lab off.')
-    except ValueError:
-        print('I could not make the robot turn off the lab.')
+    except:
+        logging.exception('Got exception on switch_off.')
+        raise
 
 
 # Set up logging
@@ -148,5 +149,6 @@ while True:
             # Reinitialize the last mention ID
             initmentionid = lastmentionid
 
-    except ValueError:
-        print('I could not run the main program.')
+    except:
+        logging.exception('Got exception on main program.')
+        raise
