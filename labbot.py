@@ -1,14 +1,10 @@
 import datetime
-import json
 import logging
 import mentionlib
 import Robot
 import subprocess
 import time
-from twitter_api import apikey, apisecret, token, tokensecret
-from twython import Twython
 
-twitter = Twython(apikey, apisecret, token, tokensecret)
 api = Twython(apikey, apisecret, token, tokensecret)
 
 robot = Robot.Robot()
