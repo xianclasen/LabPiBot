@@ -92,9 +92,8 @@ while True:
             elif '@LabPiBot Poweron' in lastmentiontext:
 
                 switch_on()
-                mentionlib.createtweet(
-                    '@XianClasen I switched the lab on.  Give me some time to verify that it worked. ' + humantime)
-                    logging.info(humantime + ': Tweet created: I switched the lab on.  Give me some time to verify that it worked.')
+                mentionlib.createtweet('@XianClasen I switched the lab on.  Give me some time to verify that it worked. ' + humantime)
+                logging.info(humantime + ': Tweet created: I switched the lab on.  Give me some time to verify that it worked.')
 
                 i = 0
                 hostisup = False
