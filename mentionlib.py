@@ -1,16 +1,3 @@
-#!/usr/bin/env python
-import json
-
-from twython import Twython
-
-# Twitter variables
-apiKey = 'DKaCYhG7T3SsasM2dJlGxiEmP'
-apiSecret = 'JjfeycHATl6eAXG8hWyS4WQ9kqM34fqRobx0YdTtnwcpqayf0K'
-accessToken = '888960882516140032-OvH0w5aAUbVSUzaFLFpf6wCgKNCjsOr'
-accessTokenSecret = 'nNv4G5hKxcWMS0WTNnnZkWzZ2gH6Z8zyP1cJM0lLgdSRT'
-twitter = Twython(apiKey, apiSecret, accessToken, accessTokenSecret)
-api = Twython(apiKey, apiSecret, accessToken, accessTokenSecret)
-
 # Pull down the most recent twitter mention JSON data
 def getlastmentionjson():
     try:
@@ -65,12 +52,3 @@ def getlastmentiontext(lastmentiondict):
         return lastmentiontext
     except ValueError:
         print('I could not determine the text of the last mention.')
-
-
-lastmentionjson = getlastmentionjson()
-# lastmentiondict = parsementionjson(lastmentionjson)
-# lastmentionscreenname = getmentionscreenname(lastmentiondict)
-# lastmentionid = getlastmentionid(lastmentiondict)
-# lastmentiontext = getlastmentiontext(lastmentiondict)
-
-print(lastmentionjson)
