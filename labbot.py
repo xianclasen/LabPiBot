@@ -133,7 +133,6 @@ while True:
 
                     if ('0 receive' in ping('esxi')) or (i > 20):
                         hostisup = False
-                        logging.info(humantime + 'Did not receive a reply after 20 ping requests.'
 
                 # Turn off the power
                 logging.info(humantime + ': Switching off the power now.')
