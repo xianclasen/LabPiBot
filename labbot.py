@@ -5,8 +5,6 @@ import Robot
 import subprocess
 import time
 
-api = Twython(apikey, apisecret, token, tokensecret)
-
 robot = Robot.Robot()
 
 # Open an SSH connection to the ESXI host and issue the 'poweroff' command
