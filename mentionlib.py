@@ -82,6 +82,6 @@ def verifymentionid(mentionid, initmentionid):
 # Create a tweet with given text
 def createtweet(tweetstring):
     try:
-        api.update_status(status=tweetstring)
+        twitter.update_status(status=tweetstring)
     except ValueError:
         print('I failed to create the tweet.')
