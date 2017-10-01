@@ -1,3 +1,5 @@
+twitter = Twython(apikey, apisecret, token, tokensecret)
+
 # Pull down the most recent twitter mention JSON data
 def getlastmentionjson():
     try:
