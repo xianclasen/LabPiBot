@@ -94,6 +94,7 @@ while True:
                 switch_on()
                 mentionlib.createtweet(
                     '@XianClasen I switched the lab on.  Give me some time to verify that it worked. ' + humantime)
+                    logging.info(humantime + ': Tweet created: I switched the lab on.  Give me some time to verify that it worked.')
 
                 i = 0
                 hostisup = False
@@ -104,10 +105,11 @@ while True:
 
                     if '1 receive' in ping('esxi'):
                         hostisup = True
-                        logging.info(humantime + ping('esxi'))
+                        logging.info(humantime + 'Got a ping reply from esxi.')
 
                     elif i > 20:
                         mentionlib.createtweet("@XianClasen I have failed you.  The lab isn't up. " + humantime)
+                        logging.info(humantime + ": Tweet created: I have failed you.  The lab isn't up.")
                         break
 
                 if hostisup:
@@ -118,8 +120,8 @@ while True:
             elif '@LabPiBot Poweroff' in lastmentiontext:
 
                 shutdown()
-                mentionlib.createtweet("@XianClasen I told ESXI to shutdown.  I'll let you know when I've switched off the power. "
-                            + humantime)
+                mentionlib.createtweet("@XianClasen I told ESXI to shutdown.  I'll let you know when I've switched off the power. " + humantime)
+                logging.info(humantime + ": Tweet created: I told ESXI to shutdown.  I'll let you know when I've switched off the power.")
 
                 # Ping ESXI until it stops responding, or we reach 10 minutes
                 hostisup = True
@@ -132,7 +134,7 @@ while True:
 
                     if ('0 receive' in ping('esxi')) or (i > 20):
                         hostisup = False
-                        logging.info(humantime + ping('esxi'))
+                        logging.info(humantime + 'Did not receive a reply after 20 ping requests.'
 
                 # Turn off the power
                 logging.info(humantime + ': Switching off the power now.')
@@ -145,6 +147,7 @@ while True:
             logging.warning(lastmentionscreenname + ' tried to issue us the following command: ' + lastmentiontext)
             print(lastmentionscreenname + ' tried to issue us the following command: ' + lastmentiontext)
             mentionlib.createtweet("@" + lastmentionscreenname + " You didn't say the magic word! " + humantime)
+            logging.info(humantime + ": Tweet created: " + lastmentionscreenname + " You didn't say the magic word!")
 
             # Reinitialize the last mention ID
             initmentionid = lastmentionid
